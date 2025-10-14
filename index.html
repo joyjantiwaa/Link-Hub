@@ -1,106 +1,117 @@
 <!doctype html>
 <html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Real-Life Thai System — Link Hub</title>
-  <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#ff6b6b;--glass:rgba(255,255,255,0.04)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071128 0%,#081623 100%);color:#e6eef6;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:32px}
-    .wrap{width:100%;max-width:980px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:14px;padding:18px;backdrop-filter:blur(6px);box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04)}
-    header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#ff9a9e,#fad0c4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#172023}
-    h1{font-size:18px;margin:0}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Real-Life Thai System — Link Hub</title>
+<style>
+  body {
+    margin:0;
+    font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;
+    background:linear-gradient(180deg,#071128 0%,#081623 100%);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:16px;
+  }
+  .wrap{width:100%;max-width:500px}
 
-    /* rows */
-    .rows{display:grid;gap:10px;margin-top:14px}
-    .row{display:flex;gap:10px;align-items:center}
-    .row .title{min-width:180px;color:var(--muted);font-size:14px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:600;
+    text-decoration:none;
+    color:#081017;
+    background:linear-gradient(90deg,#ff6b6b,#ff8a5b);
+    margin-bottom:12px;
+    justify-content:center;
+    transition: transform 0.14s ease;
+  }
+  .btn:hover { transform:translateY(-3px); }
 
-    /* social icons */
-    .icon-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);cursor:pointer;text-decoration:none;color:inherit;font-weight:600;font-size:14px}
-    .icon-btn svg{width:20px;height:20px;flex-shrink:0}
-    .icon-btn:hover{transform:translateY(-3px);transition:all .14s ease}
+  .btn svg {
+    width:28px;
+    height:28px;
+    flex-shrink:0;
+    color:#fff;
+  }
 
-    .primary{background:linear-gradient(90deg,var(--accent),#ff8a5b);color:#081017}
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+  /* Ghost button (transparent) */
+  .btn.ghost{
+    background:rgba(255,255,255,0.06);
+    color:#fff;
+  }
 
-    /* responsive */
-    @media (max-width:680px){
-      .row{flex-direction:column;align-items:stretch}
-      .row .title{min-width:unset}
-      .actions{justify-content:flex-start}
-    }
-
-    .small{font-size:13px;padding:8px 10px;border-radius:8px}
-    footer{margin-top:14px;color:var(--muted);font-size:13px;text-align:center}
-  </style>
+  /* Social row */
+  .socials {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(80px,1fr));
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .socials .btn{
+    flex-direction:column;
+    font-size:14px;
+    padding:14px;
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" role="region" aria-label="Real-Life Thai System Hub">
-      <header>
-        <div>
-          <h1>Real-Life Thai System</h1>
-        </div>
-      </header>
+<div class="wrap">
 
-      <div class="rows">
-
-        <!-- Row 1: Social icons -->
-        <div class="row" id="row-social">
-          <div class="actions">
-            <a class="icon-btn" href="https://www.tiktok.com/@your_username" target="_blank" rel="noopener noreferrer">
-              <!-- TikTok SVG -->
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2v7.2a4.8 4.8 0 1 0 4.8 4.8V6h3V2h-7.8z"/></svg>
-            </a>
-            <a class="icon-btn" href="https://www.youtube.com/your_channel" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.8 3 12 3 12 3s-4.8 0-7.9.7c-.4.1-1.3.1-2.1 1C1.2 5.4 1 7 1 7S1 8.9 1.4 10.1c.3 1.1 1 1.7 1.7 2.4C5.2 14.6 12 15 12 15s4.8-.1 8.9-1.1c.7-.2 1.4-.9 1.7-2 .4-1.2.4-2 .4-2zM9.5 10.9V6l5 2.4-5 2.5z"/></svg>
-            </a>
-            <a class="icon-btn" href="https://www.facebook.com/your_page" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.6c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
-            </a>
-            <a class="icon-btn" href="https://www.instagram.com/your_username" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1A4.9 4.9 0 1 0 16.9 14 4.9 4.9 0 0 0 12 8.1zm6.5-.6a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/></svg>
-            </a>
-            <a class="icon-btn" href="https://yourwebsite.example.com" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 17h-2v-2h2zm0-4h-2V7h2z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Row 2: Buy book -->
-        <div class="row" id="row-book">
-          <div class="actions">
-            <a class="icon-btn primary" href="https://your-pay-link.example.com/buy-real-life-thai-system" target="_blank" rel="noopener noreferrer">
-              <!-- Book icon -->
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5v14a2 2 0 0 0 2 2h12V5H3zm16-2H5a2 2 0 0 0-2 2v.5L12 9l9-3.5V5a2 2 0 0 0-2-2z"/>Real-Thai System Book</svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Row 3: Join Speak Thai Club -->
-        <div class="row" id="row-club">
-          <div class="actions">
-            <a class="icon-btn" href="https://your-membership.example.com/speak-thai-club" target="_blank" rel="noopener noreferrer">Join Club</a>
-          </div>
-        </div>
-
-        <!-- Row 4: Book + Club, Become Affiliate Partner -->
-        <div class="row" id="row-bookclub-aff">
-          <div class="actions">
-            <a class="icon-btn" href="https://your-membership.example.com/book-plus-club" target="_blank" rel="noopener noreferrer">Book + Club</a>
-            <a class="icon-btn" href="https://your-affiliate.example.com/apply" target="_blank" rel="noopener noreferrer">Become Affiliate Partner</a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
+  <!-- Row 1: Social icons -->
+  <div class="socials">
+    <a class="btn ghost" href="https://www.tiktok.com/@your_username" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v7.2a4.8 4.8 0 1 0 4.8 4.8V6h3V2h-7.8z"/></svg>
+      TikTok
+    </a>
+    <a class="btn ghost" href="https://www.youtube.com/your_channel" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 10.9V6l5 2.4-5 2.5z"/></svg>
+      YouTube
+    </a>
+    <a class="btn ghost" href="https://www.facebook.com/your_page" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.6c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+      Facebook
+    </a>
+    <a class="btn ghost" href="https://www.instagram.com/your_username" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1A4.9 4.9 0 1 0 16.9 14 4.9 4.9 0 0 0 12 8.1zm6.5-.6a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/></svg>
+      Instagram
+    </a>
+    <a class="btn ghost" href="https://yourwebsite.example.com" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 17h-2v-2h2zm0-4h-2V7h2z"/></svg>
+      Website
+    </a>
   </div>
+
+  <!-- Row 2: Buy book -->
+  <a class="btn" href="https://your-pay-link.example.com/buy-real-life-thai-system" target="_blank">
+    📖 Real-Life Thai System Book
+  </a>
+
+  <!-- Row 3: Join Speak Thai Club -->
+  <a class="btn" href="https://your-membership.example.com/speak-thai-club" target="_blank">
+    🗣️ Join Speak Thai Club
+  </a>
+
+  <!-- Row 4: Book + Club, Become Affiliate -->
+  <a class="btn" href="https://your-membership.example.com/book-plus-club" target="_blank">
+    📚 Book + Club
+  </a>
+  <a class="btn" href="https://your-affiliate.example.com/apply" target="_blank">
+    🤝 Become Affiliate Partner
+  </a>
+
+  <!-- Row 5: How to Learn Thai -->
+  <a class="btn" href="how-to-learn-thai.html" target="_blank">
+    📝 How to Learn Thai
+  </a>
+
+</div>
 </body>
 </html>
