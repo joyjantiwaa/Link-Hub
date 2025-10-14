@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Real-Life Thai System — Link Hub</title>
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-w0r9Vv8Z+5eG6pN1pJr+QrKzNH3X3KzlEwGvSjKJcT2F7HdPcg7F+1ZmX8L8kC1m6j6B8Ah7Z0rcHbH/5Tn1Rg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   body {
     margin:0;
@@ -28,26 +27,6 @@
     margin-bottom:20px;
   }
 
-  /* Social icons row (icon only, no background) */
-  .socials{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin-bottom:20px;
-  }
-  .socials a{
-    text-decoration:#7F56D9;
-    font-size:36px;
-  }
-  .socials i{
-    font-size:36px; /* ขนาดใหญ่พอเห็นบนมือถือ */
-    color:#7F56D9;  /* สีที่กำหนด */
-    transition: transform 0.2s;
-  }
-  .socials i:hover{
-    transform: scale(1.2); /* zoom เล็ก ๆ เวลา hover */
-  }
-
   /* Main buttons */
   .btn{
     display:flex;
@@ -66,6 +45,25 @@
   }
   .btn:hover{
     transform:translateY(-3px);
+  }
+
+  /* Social icons (icon only, no background) */
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:20px; /* เว้นจากปุ่ม */
+  }
+  .socials a{
+    text-decoration:none;
+  }
+  .socials i{
+    font-size:36px;
+    color:#7F56D9;
+    transition: transform 0.2s;
+  }
+  .socials i:hover{
+    transform: scale(1.2);
   }
 
   /* Responsive */
@@ -89,7 +87,7 @@
 
   <!-- Top image -->
   <div class="top-image">
-    <img src="https://via.placeholder.com/150x150.png?text=Logo" alt="Logo">
+    <img src="https://via.placeholder.com/240x240.png?text=Logo" alt="Logo">
   </div>
 
   <!-- Main Links -->
@@ -98,7 +96,8 @@
   <a class="btn" href="https://your-membership.example.com/book-plus-club" target="_blank">📚 Book + Club</a>
   <a class="btn" href="https://your-affiliate.example.com/apply" target="_blank">🤝 Become Affiliate Partner</a>
   <a class="btn" href="how-to-learn-thai.html" target="_blank">📝 How to Learn Thai</a>
-    <!-- Social Icons (icon only, no background) -->
+
+  <!-- Social Icons -->
   <div class="socials">
     <a href="https://www.tiktok.com/@your_username" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
     <a href="https://www.youtube.com/your_channel" target="_blank"><i class="fa-brands fa-youtube"></i></a>
@@ -106,25 +105,6 @@
     <a href="https://www.instagram.com/your_username" target="_blank"><i class="fa-brands fa-instagram"></i></a>
     <a href="https://yourwebsite.example.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
   </div>
-  <style>
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  margin-top:20px; /* เว้นจากปุ่ม */
-}
-.socials a{
-  text-decoration:none; /* ลบเส้นใต้ */
-}
-.socials i{
-  font-size:36px;   /* ขนาดไอคอน */
-  color:#7F56D9;    /* สีไอคอน */
-  transition: transform 0.2s;
-}
-.socials i:hover{
-  transform: scale(1.2);
-}
-</style>
 
 </div>
 </body>
