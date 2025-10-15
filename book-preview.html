@@ -12,20 +12,32 @@ body, html {
   color:#000;
 }
 
-/* Mobile / Tablet: full screen but keep original aspect ratio */
+/* Desktop: ใช้ขนาดต้นฉบับ */
+@media(min-width:1025px){
+  .book-images img {
+    width:auto;
+    height:auto;
+    max-width:600px; /* หรือจะปรับตามภาพต้นฉบับก็ได้ */
+    margin-bottom:20px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.5);
+    display:block;
+  }
+}
+
+/* Mobile / Tablet: เต็มจอแนวกว้าง แต่คงสัดส่วน */
 @media(max-width:1024px){
   .book-images img {
-    width:100%;
-    height:auto;        /* สูงอัตโนมัติ ปรับตามสัดส่วน */
-    max-height:100vh;   /* ไม่เกินความสูงจอ */
+    width:100vw;        /* เต็มจอแนวกว้าง */
+    height:auto;         /* คงสัดส่วนภาพ */
+    max-height:100vh;    /* ไม่ให้สูงเกินจอ */
     max-width:none;
-    margin-bottom:10px;
+    margin-bottom:0;
     border-radius:0;
     box-shadow:none;
     display:block;
   }
 }
-
 /* Interactive blocks */
 .sentence-block {
   display:flex;
