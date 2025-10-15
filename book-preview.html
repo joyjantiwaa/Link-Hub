@@ -29,16 +29,17 @@ body, html {
   border-radius:8px;
 }
 
-/* Mobile / Tablet: full screen */
+/* Mobile / Tablet: full screen but keep original aspect ratio */
 @media(max-width:1024px){
   .book-images img {
-    width:100vw;
-    height:100vh;
+    width:100%;
+    height:auto;        /* สูงอัตโนมัติ ปรับตามสัดส่วน */
+    max-height:100vh;   /* ไม่เกินความสูงจอ */
     max-width:none;
-    max-height:none;
-    margin-bottom:0;
+    margin-bottom:10px;
     border-radius:0;
     box-shadow:none;
+    display:block;
   }
 }
 
