@@ -12,38 +12,39 @@ body, html {
   color:#000;
 }
 
-/* ตัวอย่างหน้าหนังสือ */
+/* หน้าแต่ละหน้าหนังสือ */
 .page-sample {
   width:100%;
-  max-width:800px;
-  height:auto;
-  aspect-ratio:3/4; /* รักษาสัดส่วนต้นฉบับ */
-  margin:20px auto;
-  background-size:contain;
-  background-repeat:no-repeat;
+  height:100vh;
+  background-size:cover;
   background-position:center;
+  margin:0;
   transition: transform 0.2s;
 }
 
-/* สำหรับมือถือ */
-@media(max-width:600px){
+/* สำหรับ desktop ให้ภาพตามขนาดจริง */
+@media(min-width:601px){
   .page-sample {
-    height:100vh; /* เต็มหน้าจอมือถือ */
-    margin:10px 0; /* ลดช่องว่าง */
+    width:auto;
+    height:auto;
+    max-width:800px;
+    margin:20px auto;
+    background-size:contain;
   }
 }
 
 /* กล่อง interactive */
 .sentence-block {
-  display:flex;
-  gap:15px;
-  padding:15px;
   background:#fff;
   border-radius:12px;
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
   margin:20px auto;
   max-width:800px;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
   align-items:center;
+  gap:15px;
 }
 
 .sentence-block img {
@@ -53,25 +54,20 @@ body, html {
   border-radius:12px;
 }
 
-.sentence-block .text {
-  flex:1;
-}
-
+/* ข้อความ */
 .sentence-block p.thai {
   font-size:20px;
   margin:0;
 }
-
 .sentence-block p.roman {
   font-size:16px;
   margin:3px 0;
   color:#555;
   font-style:italic;
 }
-
 .sentence-block p.english {
   font-size:16px;
-  margin:3px 0 10px 0;
+  margin:3px 0;
   color:#555;
 }
 
@@ -80,26 +76,23 @@ body, html {
   padding:10px 20px;
   border:none;
   border-radius:50px;
-  background:#fff;      /* เริ่มต้นขาว */
-  color:#1A35E5;        /* ตัวหนังสือสีน้ำเงิน */
+  background:#1A35E5;
+  color:#fff;
   font-size:16px;
   font-weight:600;
   cursor:pointer;
-  transition: all 0.2s;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
-
 .sentence-block button:hover {
   transform:scale(1.05);
-  background:#1A35E5;
-  color:#fff;
 }
 
 /* ปุ่มสั่งซื้อ sticky bottom */
-.buy-btn{
+.buy-btn {
   position: fixed;
   bottom:20px;
   left:50%;
-  transform: translateX(-50%);
+  transform:translateX(-50%);
   padding:16px 40px;
   background:#fff;
   color:#1A35E5;
@@ -111,26 +104,21 @@ body, html {
   z-index:999;
   transition: all 0.2s;
 }
-.buy-btn:hover{
+.buy-btn:hover {
   transform:scale(1.05);
   background:#1A35E5;
   color:#fff;
 }
 
 /* Responsive */
-@media(max-width:400px){
-  .sentence-block {
-    flex-direction:column;
-    align-items:flex-start;
-  }
+@media(max-width:600px){
   .sentence-block img {
     width:200px;
     height:200px;
   }
-  .sentence-block button{
+  .sentence-block button {
     font-size:14px;
     padding:8px 16px;
-    margin-top:10px;
   }
 }
 </style>
@@ -151,35 +139,29 @@ body, html {
 
 <div class="sentence-block">
   <img src="example1.jpg" alt="Example image">
-  <div class="text">
-    <p class="thai">สวัสดีครับ</p>
-    <p class="roman">Sawasdee krap</p>
-    <p class="english">Hello!</p>
-    <button onclick="document.getElementById('audio1').play()">🔊 Listen</button>
-    <audio id="audio1" src="audio1.mp3"></audio>
-  </div>
+  <p class="thai">สวัสดีครับ</p>
+  <p class="roman">Sawasdee krap</p>
+  <p class="english">Hello!</p>
+  <button onclick="document.getElementById('audio1').play()">🔊 Listen</button>
+  <audio id="audio1" src="audio1.mp3"></audio>
 </div>
 
 <div class="sentence-block">
   <img src="example2.jpg" alt="Example image">
-  <div class="text">
-    <p class="thai">คุณชื่ออะไร?</p>
-    <p class="roman">Khun chue arai?</p>
-    <p class="english">What is your name?</p>
-    <button onclick="document.getElementById('audio2').play()">🔊 Listen</button>
-    <audio id="audio2" src="audio2.mp3"></audio>
-  </div>
+  <p class="thai">คุณชื่ออะไร?</p>
+  <p class="roman">Khun chue arai?</p>
+  <p class="english">What is your name?</p>
+  <button onclick="document.getElementById('audio2').play()">🔊 Listen</button>
+  <audio id="audio2" src="audio2.mp3"></audio>
 </div>
 
 <div class="sentence-block">
   <img src="example3.jpg" alt="Example image">
-  <div class="text">
-    <p class="thai">ฉันมาจากประเทศไทย</p>
-    <p class="roman">Chan ma jak Prathet Thai</p>
-    <p class="english">I come from Thailand</p>
-    <button onclick="document.getElementById('audio3').play()">🔊 Listen</button>
-    <audio id="audio3" src="audio3.mp3"></audio>
-  </div>
+  <p class="thai">ฉันมาจากประเทศไทย</p>
+  <p class="roman">Chan ma jak Prathet Thai</p>
+  <p class="english">I come from Thailand</p>
+  <button onclick="document.getElementById('audio3').play()">🔊 Listen</button>
+  <audio id="audio3" src="audio3.mp3"></audio>
 </div>
 
 <!-- ปุ่มสั่งซื้อ sticky -->
