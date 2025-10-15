@@ -16,36 +16,39 @@ body, html {
 .book-images {
   display:flex;
   flex-direction: column;
-  align-items:center;  /* จัดกึ่งกลางแนวนอน */
-  justify-content:center;
-  margin:0 auto 60px auto; /* จัดกลาง + เว้นด้านล่าง */
+  align-items:center;     /* จัดกลางแนวนอน */
+  justify-content:center; /* จัดกลางแนวตั้งถ้ามีพื้นที่ */
   width:100%;
+  margin:0 auto 60px auto;
+  text-align:center;
 }
 
-/* Desktop: ใช้ขนาดต้นฉบับ + จัดกึ่งกลาง */
+/* ให้ภาพทุกขนาดอยู่กึ่งกลางเสมอ */
+.book-images img {
+  display:block;
+  margin:0 auto 20px auto;
+  border-radius:8px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Desktop */
 @media(min-width:1025px){
   .book-images img {
-    width:auto;
+    max-width:600px;
+    width:100%;
     height:auto;
-    max-width:600px; /* ขนาดต้นฉบับหรือปรับตามภาพจริง */
-    margin:0 auto 20px auto; /* จัดกลางและเว้นระยะ */
-    border-radius:8px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.5);
-    display:block;
   }
 }
 
-/* Mobile / Tablet: เต็มจอแนวกว้าง แต่คงสัดส่วน */
+/* Mobile / Tablet */
 @media(max-width:1024px){
   .book-images img {
-    width:100vw;        /* เต็มจอแนวกว้าง */
-    height:auto;         /* คงสัดส่วน */
-    max-height:100vh;    /* ไม่ให้สูงเกินจอ */
-    max-width:none;
-    margin-bottom:0;
+    width:100%;
+    height:auto;
+    max-height:100vh;
     border-radius:0;
     box-shadow:none;
-    display:block;
+    margin-bottom:0;
   }
 }
 
