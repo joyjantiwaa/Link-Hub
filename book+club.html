@@ -10,7 +10,6 @@ body, html {
   font-family: Inter, sans-serif;
   background:#f9f9f9;
   color:#000;
-  text-align:center;
 }
 
 /* Club title */
@@ -21,13 +20,16 @@ body, html {
   padding:40px 10px;
   color:#000;
   background:#fff;
+  text-align:center;
 }
 
-/* Features list */
+/* Features list - align left but container centered */
 .features {
   list-style:none;
-  padding:0;
-  margin:30px 0;
+  padding:0 0 0 20px;
+  margin:30px auto;
+  max-width:600px;
+  text-align:left;
 }
 .features li {
   margin:10px 0;
@@ -45,17 +47,17 @@ body, html {
   max-width:100%;
   margin:20px auto;
   display:flex;
-  justify-content:center; /* กึ่งกลางแนวนอน */
+  justify-content:center;
   align-items:center;
 }
 .image-block img {
   max-width:100%;
-  height:auto; /* รักษาสัดส่วน */
+  height:auto;
   border-radius:12px;
   box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Container for features & text */
+/* Container for text below image */
 .container {
   max-width:600px;
   margin:0 auto 120px auto;
@@ -119,22 +121,6 @@ body, html {
     margin:0 auto;
   }
 }
-/* Features list - align left */
-.features {
-  list-style:none;
-  padding:0 0 0 20px; /* วาง bullet ห่างจากขอบซ้าย */
-  margin:30px 0;
-  text-align:left;     /* เรียงชิดซ้าย */
-}
-.features li {
-  margin:10px 0;
-  font-size:18px;
-}
-.features li::before {
-  content:"✅";
-  margin-right:8px;
-  color:#1A35E5;
-}   
 </style>
 </head>
 <body>
@@ -147,6 +133,7 @@ body, html {
   <img src="page1.jpg" alt="Page 1">
 </div>
 
+<!-- Features list & text -->
 <div class="container">
   <ul class="features">
     <li>Daily 1:1 personal feedback – ฝึกพูดไทยทุกวัน</li>
@@ -156,13 +143,12 @@ body, html {
     <li>Optional meet-ups with Thai students for language exchange</li>
   </ul>
 
-  <p style="text-align:center; font-weight:600; margin-bottom:20px;">
+  <p style="font-weight:600; margin-bottom:20px;">
     💪 Stronger Thai in just 1 month!<br>
     💸 Only 1,290 THB<br>
     🎁 7-day trial – no credit required!
   </p>
 </div>
-
 
 <!-- Buy Button -->
 <a href="https://your-stripe-link.example.com" class="buy-btn">Join Thai Speaking Club</a>
