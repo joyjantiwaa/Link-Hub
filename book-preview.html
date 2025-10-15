@@ -12,53 +12,76 @@ body, html {
   color:#000;
 }
 
-/* หน้าแต่ละหน้าหนังสือ */
+/* ---------- ภาพหน้าหนังสือ ---------- */
 .page-sample {
   width:100vw;
   height:100vh;
   background-size:cover;
   background-position:center;
   margin-bottom:20px;
-  transition: transform 0.2s;
 }
 
-/* Desktop: ขนาดจริงของภาพ */
-@media(min-width:601px){
+/* Desktop: ขนาดต้นฉบับ, ไม่เต็มจอ */
+@media(min-width:768px){
   .page-sample {
     width:auto;
     height:auto;
     max-width:800px;
-    margin:20px auto;
+    margin:40px auto;
     background-size:contain;
     background-repeat:no-repeat;
   }
 }
 
-/* กล่อง interactive */
-.sentence-block {
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+/* ---------- ปุ่มซื้อ ---------- */
+.buy-btn {
+  display:block;
   margin:20px auto;
-  max-width:800px;
-  padding:15px;
+  width:90%;
+  max-width:500px;
+  padding:16px;
+  background:#fff;
+  color:#1A35E5;
+  font-size:18px;
+  font-weight:600;
+  border-radius:50px;
+  text-align:center;
+  text-decoration:none;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.buy-btn:hover {
+  transform:scale(1.05);
+  background:#1A35E5;
+  color:#fff;
+}
+
+/* ---------- กล่อง interactive ---------- */
+.sentence-block {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:15px;
+  background:#fff;
+  padding:15px;
+  margin:20px auto;
+  max-width:500px;
+  border-radius:12px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
+.sentence-block:hover {
+  transform:scale(1.02);
+  box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
 .sentence-block img {
   width:250px;
   height:250px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:10px;
+  margin-bottom:12px;
 }
-
-/* ข้อความ */
-.sentence-block p.thai { font-size:20px; margin:0; }
-.sentence-block p.roman { font-size:16px; margin:3px 0; color:#555; font-style:italic; }
-.sentence-block p.english { font-size:16px; margin:3px 0; color:#555; }
+.sentence-block p.thai { font-size:18px; margin:0; font-weight:600; }
+.sentence-block p.roman { font-size:14px; margin:3px 0; color:#555; font-style:italic; }
+.sentence-block p.english { font-size:14px; margin:3px 0 10px 0; color:#555; }
 
 /* ปุ่มฟังเสียง */
 .sentence-block button {
@@ -68,42 +91,23 @@ body, html {
   background:#1A35E5;
   color:#fff;
   font-size:16px;
-  font-weight:600;
   cursor:pointer;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 .sentence-block button:hover {
   transform:scale(1.05);
-}
-
-/* ปุ่มสั่งซื้อ sticky */
-.buy-btn {
-  position: fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90%;
-  max-width:500px;
-  padding:16px;
-  background:#fff;
-  color:#1A35E5;
-  font-size:18px;
-  font-weight:600;
-  border-radius:50px;
-  text-decoration:none;
-  text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-}
-.buy-btn:hover {
-  transform:scale(1.05);
-  background:#1A35E5;
-  color:#fff;
+  background:#162abf;
 }
 
 /* Responsive */
-@media(max-width:600px){
-  .sentence-block img { width:200px; height:200px; }
+@media(max-width:767px){
+  .sentence-block img {
+    width:200px;
+    height:200px;
+  }
+  .sentence-block p.thai { font-size:16px; }
+  .sentence-block p.roman { font-size:12px; }
+  .sentence-block p.english { font-size:12px; }
   .sentence-block button { font-size:14px; padding:8px 16px; }
   .buy-btn { width:95%; padding:14px; font-size:16px; }
 }
@@ -120,15 +124,18 @@ body, html {
 <div class="page-sample" style="background-image:url('page6.jpg');"></div>
 <div class="page-sample" style="background-image:url('page7.jpg');"></div>
 
+<!-- ปุ่มซื้อหนังสือ -->
+<a href="https://your-stripe-link.example.com" class="buy-btn">สั่งซื้อ Real-Life Thai E-book</a>
+
 <!-- กล่อง interactive -->
-<h2 style="text-align:center; margin-top:40px;">Interactive Audio Example</h2>
+<h2 style="text-align:center; margin-top:40px;">ตัวอย่าง Interactive Audio</h2>
 
 <div class="sentence-block">
   <img src="example1.jpg" alt="Example image">
   <p class="thai">สวัสดีครับ</p>
   <p class="roman">Sawasdee krap</p>
   <p class="english">Hello!</p>
-  <button onclick="document.getElementById('audio1').play()">🔊 Listen</button>
+  <button onclick="document.getElementById('audio1').play()">🔊 ฟังเสียง</button>
   <audio id="audio1" src="audio1.mp3"></audio>
 </div>
 
@@ -137,7 +144,7 @@ body, html {
   <p class="thai">คุณชื่ออะไร?</p>
   <p class="roman">Khun chue arai?</p>
   <p class="english">What is your name?</p>
-  <button onclick="document.getElementById('audio2').play()">🔊 Listen</button>
+  <button onclick="document.getElementById('audio2').play()">🔊 ฟังเสียง</button>
   <audio id="audio2" src="audio2.mp3"></audio>
 </div>
 
@@ -146,12 +153,9 @@ body, html {
   <p class="thai">ฉันมาจากประเทศไทย</p>
   <p class="roman">Chan ma jak Prathet Thai</p>
   <p class="english">I come from Thailand</p>
-  <button onclick="document.getElementById('audio3').play()">🔊 Listen</button>
+  <button onclick="document.getElementById('audio3').play()">🔊 ฟังเสียง</button>
   <audio id="audio3" src="audio3.mp3"></audio>
 </div>
-
-<!-- ปุ่มสั่งซื้อ sticky -->
-<a href="https://your-stripe-link.example.com" class="buy-btn">Buy Real-Life Thai E-book</a>
 
 </body>
 </html>
