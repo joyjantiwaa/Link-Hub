@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real-Life Thai System — Book Preview</title>
+<style>
+body, html {
+  margin:0; padding:0;
+  font-family: Inter, sans-serif;
+  background:#000;
+  color:#fff;
+}
+
+/* หน้าแต่ละหน้าหนังสือเต็มจอมือถือ */
+.page-sample {
+  width:100vw;
+  height:100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.2s, outline 0.2s;
+}
+
+.page-sample.active {
+  outline: 4px solid #1A35E5;
+  transform: scale(1.02);
+}
+
+/* บล็อกประโยค overlay */
+.sentence-block {
+  position: relative;
+  padding:15px;
+  background: rgba(0,0,0,0.6);
+  margin:15px;
+  border-radius:12px;
+  transition: all 0.2s;
+}
+.sentence-block.active {
+  border: 2px solid #1A35E5;
+  background: rgba(26,53,229,0.7);
+  transform: scale(1.02);
+}
+.sentence-block img {
+  width:100%;
+  max-height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+.sentence-block p.thai { font-size:20px; margin:0; }
+.sentence-block p.roman { font-size:16px; margin:3px 0; color:#ccc; font-style:italic; }
+.sentence-block p.english { font-size:16px; margin:3px 0 10px 0; color:#ccc; }
+
+/* ปุ่มฟังเสียง */
+.sentence-block button {
+  padding:10px 20px;
+  border:none;
+  border-radius:50px;
+  background:#1A35E5;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* ปุ่มสั่งซื้อ sticky bottom */
+.buy-btn{
+  position: fixed;
+  bottom:20px;
+  left:50%;
+  transform: translateX(-50%);
+  padding:16px 40px;
+  background:#1A35E5;
+  color:#fff;
+  font-size:18px;
+  font-weight:600;
+  border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  z-index:999;
+}
+.buy-btn:hover{
+  background:#162abf;
+}
+
+/* Responsive */
+@media(max-width:400px){
+  .sentence-block p.thai{ font-size:18px; }
+  .sentence-block p.roman{ font-size:14px; }
+  .sentence-block p.english{ font-size:14px; }
+  .sentence-block button{ font-size:14px; padding:8px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ตัวอย่างหน้าหนังสือ -->
+<div class="page-sample" style="background-image:url('page1.jpg');"></div>
+<div class="page-sample" style="background-image:url('page2.jpg');"></div>
+<div class="page-sample" style="background-image:url('page3.jpg');"></div>
+<div class="page-sample" style="background-image:url('page4.jpg');"></div>
+<div class="page-sample" style="background-image:url('page5.jpg');"></div>
+
+<!-- บล็อกประโยค interactive -->
+<div class="sentence-block">
+  <img src="example1.jpg" alt="Example image">
+  <p class="thai">สวัสดีครับ</p>
+  <p class="roman">Sawasdee krap</p>
+  <p class="english">Hello!</p>
+  <button onclick="document.getElementById('audio1').play()">🔊 ฟังเสียง</button>
+  <audio id="audio1" src="audio1.mp3"></audio>
+</div>
+
+<div class="sentence-block">
+  <img src="example2.jpg" alt="Example image">
+  <p class="thai">คุณชื่ออะไร?</p>
+  <p class="roman">Khun chue arai?</p>
+  <p class="english">What is your name?</p>
+  <button onclick="document.getElementById('audio2').play()">🔊 ฟังเสียง</button>
+  <audio id="audio2" src="audio2.mp3"></audio>
+</div>
+
+<div class="sentence-block">
+  <img src="example3.jpg" alt="Example image">
+  <p class="thai">ฉันมาจากประเทศไทย</p>
+  <p class="roman">Chan ma jak Prathet Thai</p>
+  <p class="english">I come from Thailand</p>
+  <button onclick="document.getElementById('audio3').play()">🔊 ฟังเสียง</button>
+  <audio id="audio3" src="audio3.mp3"></audio>
+</div>
+
+<!-- ปุ่มสั่งซื้อ sticky -->
+<a href="https://your-stripe-link.example.com" class="buy-btn">สั่งซื้อหนังสือ</a>
+
+<!-- JS สำหรับ active scroll -->
+<script>
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+}
+
+function updateActive() {
+  const pages = document.querySelectorAll('.page-sample');
+  const blocks = document.querySelectorAll('.sentence-block');
+
+  pages.forEach(page => {
+    if (isInViewport(page)) page.classList.add('active');
+    else page.classList.remove('active');
+  });
+
+  blocks.forEach(block => {
+    if (isInViewport(block)) block.classList.add('active');
+    else block.classList.remove('active');
+  });
+}
+
+// ตรวจ scroll และ load
+window.addEventListener('scroll', updateActive);
+window.addEventListener('load', updateActive);
+
+// ทำให้กดปุ่มฟังเสียงแล้ว block เป็น active
+const buttons = document.querySelectorAll('.sentence-block button');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.parentElement.classList.remove('active'));
+    btn.parentElement.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
