@@ -18,7 +18,7 @@ body, html {
   height:100vh;
   background-size:cover;
   background-position:center;
-  margin-bottom:20px; /* เว้นพื้นที่ด้านล่างสำหรับ interactive */
+  margin-bottom:20px;
   transition: transform 0.2s;
 }
 
@@ -30,6 +30,7 @@ body, html {
     max-width:800px;
     margin:20px auto;
     background-size:contain;
+    background-repeat:no-repeat;
   }
 }
 
@@ -55,21 +56,9 @@ body, html {
 }
 
 /* ข้อความ */
-.sentence-block p.thai {
-  font-size:20px;
-  margin:0;
-}
-.sentence-block p.roman {
-  font-size:16px;
-  margin:3px 0;
-  color:#555;
-  font-style:italic;
-}
-.sentence-block p.english {
-  font-size:16px;
-  margin:3px 0;
-  color:#555;
-}
+.sentence-block p.thai { font-size:20px; margin:0; }
+.sentence-block p.roman { font-size:16px; margin:3px 0; color:#555; font-style:italic; }
+.sentence-block p.english { font-size:16px; margin:3px 0; color:#555; }
 
 /* ปุ่มฟังเสียง */
 .sentence-block button {
@@ -104,24 +93,18 @@ body, html {
   text-decoration:none;
   text-align:center;
   box-shadow:0 4px 10px rgba(0,0,0,0.3);
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 .buy-btn:hover {
-  transform:scale(1.03);
+  transform:scale(1.05);
   background:#1A35E5;
   color:#fff;
 }
 
 /* Responsive */
 @media(max-width:600px){
-  .sentence-block img {
-    width:200px;
-    height:200px;
-  }
-  .sentence-block button {
-    font-size:14px;
-    padding:8px 16px;
-  }
+  .sentence-block img { width:200px; height:200px; }
+  .sentence-block button { font-size:14px; padding:8px 16px; }
   .buy-btn { width:95%; padding:14px; font-size:16px; }
 }
 </style>
