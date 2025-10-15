@@ -24,15 +24,17 @@ body, html {
   text-align:center;
   font-size:28px;
   font-weight:700;
-  margin-bottom:20px;
+  margin:0;
+  padding:40px 10px;
   color:#000;
+  background:#fff;
 }
 
 /* Features list */
 .features {
   list-style:none;
   padding:0;
-  margin-bottom:30px;
+  margin:30px 0;
 }
 .features li {
   margin:10px 0;
@@ -50,9 +52,7 @@ body, html {
   padding-bottom:56.25%; /* 16:9 aspect ratio */
   height:0;
   overflow:hidden;
-  border-radius:12px;
   margin-bottom:30px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.2);
   background:#000;
 }
 .video-block iframe, 
@@ -87,9 +87,29 @@ body, html {
 .buy-btn:hover{
   background:#1A35E5;
   color:#fff;
+  transform:scale(1.04);
 }
 
-/* Responsive */
+/* ---------- Desktop view: video + title full width ---------- */
+@media(min-width:1025px){
+  .club-title {
+    font-size:36px;
+    padding:60px 0;
+    margin-bottom:0;
+    width:100vw;
+  }
+  .video-block {
+    width:100vw;
+    margin-left:calc(50% - 50vw); /* make video truly edge-to-edge */
+    border-radius:0;
+    box-shadow:none;
+  }
+  .container {
+    max-width:800px;
+  }
+}
+
+/* Responsive (mobile/tablet) */
 @media(max-width:1024px){
   .container{
     padding:15px;
@@ -105,17 +125,18 @@ body, html {
 </head>
 <body>
 
+<!-- Club title -->
+<h3 class="club-title">🌟 Thai Speaking Club – Speak Thai Confidently! 🌟</h3>
+
+<!-- Video block -->
+<div class="video-block">
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
+    title="Thai Speaking Club Intro" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+</div>
+
 <div class="container">
-  
-  <h3 class="club-title">🌟 Thai Speaking Club – Speak Thai Confidently! 🌟</h3>
-  <!-- Video block -->
-  <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
-      title="Thai Speaking Club Intro" frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen></iframe>
-  </div>
-  
   <ul class="features">
     <li>Daily 1:1 personal feedback – ฝึกพูดไทยทุกวัน</li>
     <li>Learn 1 new Thai conversation daily on Discord</li>
@@ -129,7 +150,6 @@ body, html {
     💸 Only 1,290 THB<br>
     🎁 7-day trial – no credit required!
   </p>
-
 </div>
 
 <!-- Buy Button -->
