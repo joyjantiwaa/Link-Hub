@@ -2,88 +2,72 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Real-Life Thai System — Book Preview</title>
 <style>
 body, html {
   margin:0; padding:0;
   font-family: Inter, sans-serif;
-  background:#f5f5f5;
+  background:#000;
   color:#000;
 }
 
-/* ---------- ภาพหน้าหนังสือ ---------- */
-.page-sample {
-  width:100vw;
-  height:100vh;
-  background-size:cover;
-  background-position:center;
-  margin-bottom:20px;
+/* Book images container */
+.book-images {
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  margin-bottom:60px; /* เว้นด้านล่างก่อน interactive */
 }
 
-/* Desktop: ขนาดต้นฉบับ, ไม่เต็มจอ */
-@media(min-width:768px){
-  .page-sample {
-    width:auto;
-    height:auto;
-    max-width:800px;
-    margin:40px auto;
-    background-size:contain;
-    background-repeat:no-repeat;
+.book-images img {
+  width:auto;
+  height:auto;
+  max-width:600px;
+  margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
+  border-radius:8px;
+}
+
+/* Mobile / Tablet: full screen */
+@media(max-width:1024px){
+  .book-images img {
+    width:100vw;
+    height:100vh;
+    max-width:none;
+    max-height:none;
+    margin-bottom:0;
+    border-radius:0;
+    box-shadow:none;
   }
 }
 
-/* ---------- ปุ่มซื้อ ---------- */
-.buy-btn {
-  display:block;
-  margin:20px auto;
-  width:90%;
-  max-width:500px;
-  padding:16px;
-  background:#fff;
-  color:#1A35E5;
-  font-size:18px;
-  font-weight:600;
-  border-radius:50px;
-  text-align:center;
-  text-decoration:none;
-  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-}
-.buy-btn:hover {
-  transform:scale(1.05);
-  background:#1A35E5;
-  color:#fff;
-}
-
-/* ---------- กล่อง interactive ---------- */
+/* Interactive blocks */
 .sentence-block {
   display:flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items:center;
   background:#fff;
   padding:15px;
   margin:20px auto;
   max-width:500px;
   border-radius:12px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.15);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
-.sentence-block:hover {
-  transform:scale(1.02);
-  box-shadow:0 6px 12px rgba(0,0,0,0.2);
-}
+
 .sentence-block img {
   width:250px;
   height:250px;
   object-fit:cover;
-  border-radius:10px;
-  margin-bottom:12px;
+  border-radius:8px;
+  margin-bottom:10px;
 }
-.sentence-block p.thai { font-size:18px; margin:0; font-weight:600; }
-.sentence-block p.roman { font-size:14px; margin:3px 0; color:#555; font-style:italic; }
-.sentence-block p.english { font-size:14px; margin:3px 0 10px 0; color:#555; }
 
-/* ปุ่มฟังเสียง */
+.sentence-block p.thai { font-size:18px; margin:5px 0 0 0; color:#000; font-weight:600; }
+.sentence-block p.roman { font-size:16px; margin:3px 0; color:#555; font-style:italic; }
+.sentence-block p.english { font-size:16px; margin:3px 0 10px 0; color:#555; }
+
 .sentence-block button {
   padding:10px 20px;
   border:none;
@@ -92,46 +76,64 @@ body, html {
   color:#fff;
   font-size:16px;
   cursor:pointer;
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-.sentence-block button:hover {
-  transform:scale(1.05);
-  background:#162abf;
+  transition: transform 0.14s ease;
 }
 
-/* Responsive */
-@media(max-width:767px){
-  .sentence-block img {
-    width:200px;
-    height:200px;
+.sentence-block button:hover {
+  transform: scale(1.05);
+}
+
+/* Buy button fixed bottom */
+.buy-btn{
+  position: fixed;
+  bottom:20px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index:9999;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  padding:16px 0;
+  background:#fff;
+  color:#1A35E5;
+  font-size:18px;
+  font-weight:600;
+  border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.14s ease, background 0.2s, color 0.2s;
+}
+
+.buy-btn:hover{
+  transform: scale(1.05);
+  background:#1A35E5;
+  color:#fff;
+}
+
+@media(max-width:1024px){
+  .buy-btn{
+    width:95%;
+    padding:16px 0;
   }
-  .sentence-block p.thai { font-size:16px; }
-  .sentence-block p.roman { font-size:12px; }
-  .sentence-block p.english { font-size:12px; }
-  .sentence-block button { font-size:14px; padding:8px 16px; }
-  .buy-btn { width:95%; padding:14px; font-size:16px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ตัวอย่างหน้าหนังสือ -->
-<div class="page-sample" style="background-image:url('page1.jpg');"></div>
-<div class="page-sample" style="background-image:url('page2.jpg');"></div>
-<div class="page-sample" style="background-image:url('page3.jpg');"></div>
-<div class="page-sample" style="background-image:url('page4.jpg');"></div>
-<div class="page-sample" style="background-image:url('page5.jpg');"></div>
-<div class="page-sample" style="background-image:url('page6.jpg');"></div>
-<div class="page-sample" style="background-image:url('page7.jpg');"></div>
+<!-- Book Images -->
+<div class="book-images">
+  <img src="page1.jpg" alt="Page 1">
+  <img src="page2.jpg" alt="Page 2">
+  <img src="page3.jpg" alt="Page 3">
+  <img src="page4.jpg" alt="Page 4">
+  <img src="page5.jpg" alt="Page 5">
+  <img src="page6.jpg" alt="Page 6">
+  <img src="page7.jpg" alt="Page 7">
+</div>
 
-<!-- ปุ่มซื้อหนังสือ -->
-<a href="https://your-stripe-link.example.com" class="buy-btn">สั่งซื้อ Real-Life Thai E-book</a>
-
-<!-- กล่อง interactive -->
-<h2 style="text-align:center; margin-top:40px;">ตัวอย่าง Interactive Audio</h2>
-
+<!-- Interactive Blocks -->
 <div class="sentence-block">
-  <img src="example1.jpg" alt="Example image">
+  <img src="example1.jpg" alt="Example 1">
   <p class="thai">สวัสดีครับ</p>
   <p class="roman">Sawasdee krap</p>
   <p class="english">Hello!</p>
@@ -140,7 +142,7 @@ body, html {
 </div>
 
 <div class="sentence-block">
-  <img src="example2.jpg" alt="Example image">
+  <img src="example2.jpg" alt="Example 2">
   <p class="thai">คุณชื่ออะไร?</p>
   <p class="roman">Khun chue arai?</p>
   <p class="english">What is your name?</p>
@@ -149,13 +151,16 @@ body, html {
 </div>
 
 <div class="sentence-block">
-  <img src="example3.jpg" alt="Example image">
+  <img src="example3.jpg" alt="Example 3">
   <p class="thai">ฉันมาจากประเทศไทย</p>
   <p class="roman">Chan ma jak Prathet Thai</p>
   <p class="english">I come from Thailand</p>
   <button onclick="document.getElementById('audio3').play()">🔊 ฟังเสียง</button>
   <audio id="audio3" src="audio3.mp3"></audio>
 </div>
+
+<!-- Buy Button -->
+<a href="https://your-stripe-link.example.com" class="buy-btn">สั่งซื้อหนังสือ</a>
 
 </body>
 </html>
