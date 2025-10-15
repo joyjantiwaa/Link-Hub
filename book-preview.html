@@ -8,86 +8,90 @@
 body, html {
   margin:0; padding:0;
   font-family: Inter, sans-serif;
-  background:#f0f0f0;
+  background:#f5f5f5;
   color:#000;
 }
 
-/* หน้าแต่ละหน้าหนังสือ */
+/* ตัวอย่างหน้าหนังสือ */
 .page-sample {
-  width:80vw; 
-  max-width:600px;
+  width:100%;
+  max-width:800px;
+  height:auto;
+  aspect-ratio:3/4; /* รักษาสัดส่วนต้นฉบับ */
   margin:20px auto;
-  aspect-ratio: 2/3;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.2s, outline 0.2s;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  transition: transform 0.2s;
 }
 
-@media(max-width:768px){ /* มือถือ/แท็บเล็ตเต็มจอ */
+/* สำหรับมือถือ */
+@media(max-width:600px){
   .page-sample {
-    width:100vw;
-    height:100vh;
-    max-width:none;
-    border-radius:0;
-    box-shadow:none;
+    height:100vh; /* เต็มหน้าจอมือถือ */
+    margin:10px 0; /* ลดช่องว่าง */
   }
 }
 
-.page-sample.active {
-  transform: scale(1.02);
-  outline:4px solid #1A35E5;
-}
-
-/* บล็อกประโยค interactive */
-h1.thai { text-align:center; margin-top:40px; color:#000; }
-
+/* กล่อง interactive */
 .sentence-block {
-  position: relative;
+  display:flex;
+  gap:15px;
   padding:15px;
   background:#fff;
-  margin:20px auto;
-  max-width:500px;
   border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
-  transition: all 0.2s;
-  display:flex;
-  flex-direction:column;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  margin:20px auto;
+  max-width:800px;
   align-items:center;
-  gap:10px;
-}
-
-.sentence-block.active {
-  transform: scale(1.02);
-  border: 2px solid #1A35E5;
 }
 
 .sentence-block img {
   width:250px;
   height:250px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:12px;
 }
 
-.sentence-block p.thai { font-size:18px; margin:0; }
-.sentence-block p.roman { font-size:14px; margin:3px 0; color:#555; font-style:italic; }
-.sentence-block p.english { font-size:14px; margin:3px 0 10px 0; color:#555; }
+.sentence-block .text {
+  flex:1;
+}
+
+.sentence-block p.thai {
+  font-size:20px;
+  margin:0;
+}
+
+.sentence-block p.roman {
+  font-size:16px;
+  margin:3px 0;
+  color:#555;
+  font-style:italic;
+}
+
+.sentence-block p.english {
+  font-size:16px;
+  margin:3px 0 10px 0;
+  color:#555;
+}
 
 /* ปุ่มฟังเสียง */
 .sentence-block button {
-  padding:8px 16px;
+  padding:10px 20px;
   border:none;
   border-radius:50px;
+  background:#fff;      /* เริ่มต้นขาว */
+  color:#1A35E5;        /* ตัวหนังสือสีน้ำเงิน */
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition: all 0.2s;
+}
+
+.sentence-block button:hover {
+  transform:scale(1.05);
   background:#1A35E5;
   color:#fff;
-  font-size:14px;
-  cursor:pointer;
-  transition: transform 0.14s ease;
-}
-.sentence-block button:hover {
-  transform: scale(1.05);
 }
 
 /* ปุ่มสั่งซื้อ sticky bottom */
@@ -108,24 +112,26 @@ h1.thai { text-align:center; margin-top:40px; color:#000; }
   transition: all 0.2s;
 }
 .buy-btn:hover{
-  transform: scale(1.05);
+  transform:scale(1.05);
+  background:#1A35E5;
+  color:#fff;
 }
 
-/* มือถือ/แท็บเล็ตให้ปุ่มเต็มความกว้าง */
-@media(max-width:768px){
-  .buy-btn {
-    width:90%;
-    padding:16px 0;
-    font-size:18px;
+/* Responsive */
+@media(max-width:400px){
+  .sentence-block {
+    flex-direction:column;
+    align-items:flex-start;
   }
-}
-
-/* Responsive text */
-@media(max-width:500px){
-  .sentence-block p.thai{ font-size:16px; }
-  .sentence-block p.roman{ font-size:12px; }
-  .sentence-block p.english{ font-size:12px; }
-  .sentence-block button{ font-size:12px; padding:6px 12px; }
+  .sentence-block img {
+    width:200px;
+    height:200px;
+  }
+  .sentence-block button{
+    font-size:14px;
+    padding:8px 16px;
+    margin-top:10px;
+  }
 }
 </style>
 </head>
@@ -140,72 +146,44 @@ h1.thai { text-align:center; margin-top:40px; color:#000; }
 <div class="page-sample" style="background-image:url('page6.jpg');"></div>
 <div class="page-sample" style="background-image:url('page7.jpg');"></div>
 
-<!-- บล็อกประโยค interactive -->
-<h1 class="thai">Example Interactive Audio for Real-Life Thai System E-book</h1>
+<!-- กล่อง interactive -->
+<h2 style="text-align:center; margin-top:40px;">Interactive Audio Example</h2>
 
 <div class="sentence-block">
   <img src="example1.jpg" alt="Example image">
-  <p class="thai">สวัสดีครับ</p>
-  <p class="roman">Sawasdee krap</p>
-  <p class="english">Hello!</p>
-  <button onclick="document.getElementById('audio1').play()">🔊 Listen</button>
-  <audio id="audio1" src="audio1.mp3"></audio>
+  <div class="text">
+    <p class="thai">สวัสดีครับ</p>
+    <p class="roman">Sawasdee krap</p>
+    <p class="english">Hello!</p>
+    <button onclick="document.getElementById('audio1').play()">🔊 Listen</button>
+    <audio id="audio1" src="audio1.mp3"></audio>
+  </div>
 </div>
 
 <div class="sentence-block">
   <img src="example2.jpg" alt="Example image">
-  <p class="thai">คุณชื่ออะไร?</p>
-  <p class="roman">Khun chue arai?</p>
-  <p class="english">What is your name?</p>
-  <button onclick="document.getElementById('audio2').play()">🔊 Listen</button>
-  <audio id="audio2" src="audio2.mp3"></audio>
+  <div class="text">
+    <p class="thai">คุณชื่ออะไร?</p>
+    <p class="roman">Khun chue arai?</p>
+    <p class="english">What is your name?</p>
+    <button onclick="document.getElementById('audio2').play()">🔊 Listen</button>
+    <audio id="audio2" src="audio2.mp3"></audio>
+  </div>
 </div>
 
 <div class="sentence-block">
   <img src="example3.jpg" alt="Example image">
-  <p class="thai">ฉันมาจากประเทศไทย</p>
-  <p class="roman">Chan ma jak Prathet Thai</p>
-  <p class="english">I come from Thailand</p>
-  <button onclick="document.getElementById('audio3').play()">🔊 Listen</button>
-  <audio id="audio3" src="audio3.mp3"></audio>
+  <div class="text">
+    <p class="thai">ฉันมาจากประเทศไทย</p>
+    <p class="roman">Chan ma jak Prathet Thai</p>
+    <p class="english">I come from Thailand</p>
+    <button onclick="document.getElementById('audio3').play()">🔊 Listen</button>
+    <audio id="audio3" src="audio3.mp3"></audio>
+  </div>
 </div>
 
 <!-- ปุ่มสั่งซื้อ sticky -->
 <a href="https://your-stripe-link.example.com" class="buy-btn">Buy Real-Life Thai E-book</a>
-
-<!-- JS สำหรับ active scroll -->
-<script>
-function isInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 0;
-}
-
-function updateActive() {
-  const pages = document.querySelectorAll('.page-sample');
-  const blocks = document.querySelectorAll('.sentence-block');
-
-  pages.forEach(page => {
-    if (isInViewport(page)) page.classList.add('active');
-    else page.classList.remove('active');
-  });
-
-  blocks.forEach(block => {
-    if (isInViewport(block)) block.classList.add('active');
-    else block.classList.remove('active');
-  });
-}
-
-window.addEventListener('scroll', updateActive);
-window.addEventListener('load', updateActive);
-
-const buttons = document.querySelectorAll('.sentence-block button');
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    buttons.forEach(b => b.parentElement.classList.remove('active'));
-    btn.parentElement.classList.add('active');
-  });
-});
-</script>
 
 </body>
 </html>
